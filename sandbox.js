@@ -1,33 +1,9 @@
-let expression = document.getElementById('expressChild');
-let strExpression = '';
-let ans = 0;
-let op1 = 0, op2 = 0, operand = '+';
-let operandInput = false, first = false, opFirst = false;
-let calculate1 = (op1, op2, operand) => {
-    first = true;
+const expression = document.getElementById('expressChild');
+const mainValue = document.getElementById('answerChild');
+let strExpression = '', op1 = 0, op2 = 0, operand = '+', operandInput = false, temp = 0, count = 0;
+let Calculate = (ans, op2, operand) => {
     if (operand === '+') {
-        return op1 + op2;
-    }
-    else if (operand === '-') {
-        return op1 - op2;
-    }
-    else if (operand === '*') {
-        return op1 * op2;
-    }
-    else {
-        if (op2 === 0) {
-            alert('Cannot Divide By Zero');
-            return 0;
-        }
-        else {
-            return op1 / op2;
-        }
-    }
-};
-let calculate2 = (op2, ans, operand) => {
-    if (operand === '+') {
-        console.log(ans + op2);
-        return op2 + ans;
+        return ans + op2;
     }
     else if (operand === '-') {
         return ans - op2;
@@ -37,7 +13,7 @@ let calculate2 = (op2, ans, operand) => {
     }
     else {
         if (op2 === 0) {
-            alert('Cannot Divide By Zero');
+            alert("The Denominator Cannot Be Zero");
             return 0;
         }
         else {
@@ -45,60 +21,52 @@ let calculate2 = (op2, ans, operand) => {
         }
     }
 };
-let value = document.getElementById('keys').addEventListener('click', function (event) {
-    let valueClicked = event.target.innerText;
-    let inputLength = valueClicked.length;
-    
-    if (inputLength === 1) {
-        if (valueClicked !== 'C' && valueClicked !== '=') {
-            strExpression += valueClicked;
+let buttonValue = document.getElementById('keys').addEventListener('click', function (event) {
+    const pressedKeys = event.target.innerText;
+    if (pressedKeys.length === 1) {
+        if (pressedKeys !== 'C' && pressedKeys !== '=') {
+            strExpression += pressedKeys;
             expression.innerText = strExpression;
-            if (valueClicked === '+' || valueClicked === '-' || valueClicked === '*' || valueClicked === '/') {
-                if (opFirst) {
-                    if (!first)
-                        ans += calculate1(op1, op2, operand);
-                    else
-                        ans = calculate2(op2, ans, operand);
-                    document.getElementById('answerChild').innerText = ans.toString();
-                }
-                operand = valueClicked;
-                op2 = 0;
+            if (Number(pressedKeys) >= 0 && Number(pressedKeys) <= 9 && (!operandInput)) {
+                op1 = op1 * 10 + Number(pressedKeys);
+                ans = op1;
+                mainValue.innerText = ans;
+            }
+            else if (Number(pressedKeys) >= 0 && Number(pressedKeys) <= 9 && (operandInput)) {
+               
+                op2 = op2 * 10 + Number(pressedKeys);
+                temp = Calculate(ans, op2, operand);
+                mainValue.innerText = temp;
+            }
+            
+            else if (pressedKeys === '+' || pressedKeys === '-' || pressedKeys === '*' || pressedKeys === '/') {
+                count++;
+                operand = pressedKeys;
+                if (count >= 2)
+                    ans = temp;
+                console.log(ans);
                 operandInput = true;
-                opFirst = true;
+                op2 = 0;
             }
-            else if (Number(valueClicked) >= 0 && Number(valueClicked) <= 9 && operandInput === false) {
-                op1 = op1 * 10 + Number(valueClicked);
-            }
-            else if (Number(valueClicked) >= 0 && Number(valueClicked) <= 9 && operandInput === true) {
-                op2 = op2 * 10 + Number(valueClicked);
-            }
-
 
         }
-        else if (valueClicked === '=') {
-            if (!first)
-                ans += calculate1(op1, op2, operand);
-            else
-                ans = calculate2(op2, ans, operand);
-            document.getElementById('answerChild').innerText = ans.toString();
+        
+        else if (pressedKeys === 'C') {
+            strExpression = '', op1 = 0, op2 = 0, operand = '+', operandInput = false, temp = 0, count = 0;
+            expression.innerText = strExpression;
+            mainValue.innerText = 0;
+
+        }
+        else if (pressedKeys === '=') {
+            expression.innerText = '';
+            ans = temp;
             strExpression = ans.toString();
-            expression.innerText = strExpression;
-            op1 = 0, op2 = 0, operand = '+', operandInput = false;
-        }
-        else if (valueClicked === 'C') {
-            ans = 0, op1 = 0, op2 = 0, operandInput = false, operand = '+', first = false;
-            strExpression = ' ';
-            expression.innerText = strExpression;
-            document.getElementById('answerChild').innerText = '0';
 
+            mainValue.innerText = ans;
         }
-
     }
-
-
-
+    else if (pressedKeys === '+/-') {
+        ans *= -1;
+        mainValue.innerText = ans;
+    }
 });
-
-
-
-
