@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Calculator</title>
+  </head>
+  <body class="center">
+    <div class="outerContainer center">
+      <div class="innerContainer center">
+        <header id="headText">
+          <h1>CALCULATOR</h1>
+        </header>
+        <main id="mainText">
+          <div id="expression">
+            <span id="expressChild"></span>        </div>
+          <div id="answer">
+            <span id="answerChild">0</span>
+          </div>
+        </main>
+        <main id="btnTable">
+          <table id="keys" class="center">
+            <tr>
+              <td>
+                <button value="C" type="submit" id="clear" style="color: #58fadc">
+                  C
+                </button>
+              </td>
+              <td>
+                <button type="submit" id="percentage" style="color: #58fadc">
+                  %
+                </button>
+              </td>
+              <td>
+                <button type="submit" id="changeSign" style="color: #58fadc">
+                  +/-
+                </button>
+              </td>
+              <td>
+                <button type="submit" id="division" style="color: #be2222">
+                  /
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><button type="submit" id="seven">7</button></td>
+              <td><button type="submit" id="eight">8</button></td>
+              <td><button type="submit" id="nine">9</button></td>
+              <td>
+                <button
+                  type="submit"
+                  id="multiplication"
+                  style="color: #be2222"
+                >
+                  *
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><button type="submit" id="four">4</button></td>
+              <td><button type="submit" id="five">5</button></td>
+              <td><button type="submit" id="six">6</button></td>
+              <td>
+                <button type="submit" id="subtraction" style="color: #be2222">
+                  -
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td><button type="submit" id="one">1</button></td>
+              <td><button type="submit" id="two">2</button></td>
+              <td><button type="submit" id="three">3</button></td>
+              <td>
+                <button type="submit" id="addition" style="color: #be2222">
+                  +
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"><button type="submit" id="zero">0</button></td>
+              <td><button type="submit" id="decimal">.</button></td>
+              <td>
+                <button type="submit" id="equal" style="color: #be2222">
+                  =
+                </button>
+              </td>
+            </tr>
+          </table>
+        </main>
+      </div>
+    </div>
+    <script src="sandbox.js"></script>
+  </body>
+</html>

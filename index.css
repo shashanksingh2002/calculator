@@ -1,0 +1,83 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+body {
+  margin: 0px;
+  padding: 2rem;
+}
+
+.outerContainer {
+  border-radius: 25px;
+  width: 70vw;
+  border: 2px solid black;
+  padding: 1.5rem;
+}
+.innerContainer {
+  border-radius: 25px;
+
+  width: 95%;
+  border: 2px solid black;
+  flex-direction: column;
+  padding: 1rem;
+}
+#headText {
+  width: 100%;
+  text-align: center;
+}
+#mainText {
+  overflow:hidden;
+  border-radius: 25px;
+  width: 100%;
+  height: 8rem;
+  border: 2px solid black;
+}
+#btnTable {
+  border-radius: 25px;
+  border: 2px solid black;
+  border-top: hidden;
+  width: 100%;
+  overflow: hidden;
+}
+#expression {
+  height: 50%;
+}
+#expressChild {
+  height:100%;
+  font-size: 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+}
+#answerChild {
+  font-size: 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+button[type="submit"] {
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  background-color: #f7f7f7;
+}
+button[type="submit"]:hover {
+  background-color: rgba(68, 62, 62);
+}
+#keys {
+  width:100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+td {
+  width: 15rem;
+  height: 4rem;
+}
